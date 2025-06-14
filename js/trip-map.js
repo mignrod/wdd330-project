@@ -36,7 +36,7 @@ async function getRecommendedCity() {
                     <h3>${cityObj.city || "City Unknow"}</h3>
                     <p><strong>Country:</strong> ${cityObj.country || "Unknow"}</p>
                     <p>${cityObj.xid}</p>
-                    <button id="fav"><img class="plus-icon" src="images/plus.svg" alt="Add" loading="lazy"> Add to Favorites</button>
+                    <button id="fav"><img class="plus-icon" src="/wdd330-project/assets/images/plus.svg" alt="Add" loading="lazy"> Add to Favorites</button>
                 `;
                 const a = cityObj.city;
                 getImg(a).then(imgElement => {
