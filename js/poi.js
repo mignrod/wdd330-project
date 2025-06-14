@@ -1,4 +1,4 @@
-import { loadHeaderFooter, getParam, getImg, getDescriptions, getCoords } from "../js/utils.mjs";
+import { loadHeaderFooter, getParam, getImg, getDescriptions, getCoords } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -171,3 +171,4 @@ const poiSection = document.querySelector(".poi");
 // poiSection.appendChild(poih2);
 // poiSection.appendChild(poiMap); 
 // poiSection.appendChild(poiList);
+
