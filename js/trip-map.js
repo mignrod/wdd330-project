@@ -14,7 +14,7 @@ loadHeaderFooter();
 
 async function getRecommendedCity() {
     try {
-        const res = await fetch("./json/recommended.json");
+        const res = await fetch("./partials/json/recommended.json");
         if (!res.ok) {
             throw new Error("Failed to fetch recommended.json");
         }
