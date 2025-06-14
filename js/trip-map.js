@@ -1,4 +1,4 @@
-import { getImg, loadHeaderFooter } from "../js/utils.mjs";
+import { getImg, loadHeaderFooter } from "./utils.mjs";
 
 const API_KEY = "a7997d0a58msh4b970335eb34949p131620jsn4b16c0e4c9c4";
 const baseUrl = "https://opentripmap-places-v1.p.rapidapi.com/en/places/";
