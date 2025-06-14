@@ -171,4 +171,3 @@ const poiSection = document.querySelector(".poi");
 // poiSection.appendChild(poih2);
 // poiSection.appendChild(poiMap); 
 // poiSection.appendChild(poiList);
-

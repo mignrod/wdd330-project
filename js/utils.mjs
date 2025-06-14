@@ -110,9 +110,6 @@ export async function getCoords(place) {
 // document.addEventListener('DOMContentLoaded', renderPOIs);
 
 
-
-
-
 // A function to get details from the user input
 async function searchDetails(city, country, data) {
   const query = `${data}, ${city}, ${country}`.trim();

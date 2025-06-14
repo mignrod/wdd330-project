@@ -14,7 +14,7 @@ loadHeaderFooter();
 
 async function getRecommendedCity() {
     try {
-        const res = await fetch("/json/recommended.json");
+        const res = await fetch("json/recommended.json");
         if (!res.ok) {
             throw new Error("Failed to fetch recommended.json");
         }
@@ -33,8 +33,8 @@ async function getRecommendedCity() {
                 card.className = "city-card";
                 card.innerHTML = `
                     <img id="photoCountry">
-                    <h3>${cityObj.city || "Ciudad desconocida"}</h3>
-                    <p><strong>Country:</strong> ${cityObj.country || "Desconocido"}</p>
+                    <h3>${cityObj.city || "City Unknow"}</h3>
+                    <p><strong>Country:</strong> ${cityObj.country || "Unknow"}</p>
                     <p>${cityObj.xid}</p>
                     <button id="fav"><img class="plus-icon" src="images/plus.svg" alt="Add" loading="lazy"> Add to Favorites</button>
                 `;
