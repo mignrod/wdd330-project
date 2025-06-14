@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+:root {
+    --font-family-main: 'Inter', sans-serif;
+    --color-primary: #149CB6;
+    --color-secondary: #CEF7F2;
+    --color-accent: #356EC9;
+    --color-text: #000000;
+    --color-background: #ffffff;
+    --color-palette: "https: //coolors.co/000000-62b4c2-2a6767-356ec9-ffffff";
+}
+
+* {
+    box-sizing: content-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-family-main);
+}
+
+header {
+    position: fixed;
+    display: flex;
+    width: 92%;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    margin: 0.5rem 4vw;
+    background: #fff;
+    box-shadow: 0 4px 24px rgba(20, 156, 182, 0.15),
+        0 1.5px 6px rgba(53, 110, 201, 0.08);
+    border-radius: 18px;
+    z-index: 3;
+
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    margin: 4px;
+}
+
+.name-section {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+
+.plus-icon {
+    width: 27px;
+    
+}
+
+#fav {
+    display: flex;
+    font-weight: bold;
+    font-size: medium;
+    background: linear-gradient(145deg, var(--color-primary) 70%, var(--color-accent) 100%);
+    border-radius: 12px;
+    margin: 10px;
+    border: none;
+    height: 2.5rem;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-background);
+    box-shadow: 0 4px 16px rgba(20, 156, 182, 0.18), 0 1.5px 6px rgba(53, 110, 201, 0.10);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+#fav:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(20, 156, 182, 0.22), 0 3px 12px rgba(53, 110, 201, 0.15);
+}
+
+.add-destiny {
+    display: flex;
+    font-weight: bold;
+    font-size: medium;
+    background: linear-gradient(145deg, var(--color-primary) 70%, var(--color-accent) 100%);
+    border-radius: 12px;
+    margin: 10px;
+    border: none;
+    height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-background);
+    box-shadow: 0 4px 16px rgba(20, 156, 182, 0.18), 0 1.5px 6px rgba(53, 110, 201, 0.10);
+    transition: transform 0.1s, box-shadow 0.1s;
+    padding: 0.2rem;
+    gap: 1px;
+}
+.add-destiny:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 24px rgba(20, 156, 182, 0.22), 0 3px 12px rgba(53, 110, 201, 0.15);
+}
+
+.add-destiny span, img {
+    padding: 3px;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 90vw;
+    justify-content: space-between;
+    margin: auto;
+    align-items: center;
+    height: 300px;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    box-shadow: 5px -14px 34px rgba(20, 156, 182, 0.15),
+        0 -1.5px 6px rgba(53, 110, 201, 0.08);
+    border-radius: 18px;
+    
+}
+
+.logo-footer {
+    width: 120px;
+}
+
+.social {
+    display: block;
+    grid-column: 1/2;
+    justify-items: center;
+    
+    
+}
+
+.rrss img {
+    width: 20px;
+    align-content: center;
+}
+
+.review {
+    grid-column: 2/4;
+    text-align: center;
+    font-size: small;
+    padding: 0.8rem;
+}
+
+.footer-links {
+    grid-column: 1/4;
+    display: flex;
+    font-size: x-small;
+    justify-content: space-around;
+}
+
+main {
+    margin-top: 150px;
+}
+
+#cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.city-card {
+    width: 100%;
+    max-width: 300px;
+    height: 380px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 8px 9px 12px rgba(20, 156, 182, 0.20);
+    justify-items: center;
+    overflow: hidden;
+}
+
+#photoCountry {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    /* Ensure image does not overflow the card */
+    overflow: hidden;
+}
+
+input:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.itinerary-section {
+    display: flex;
+    width: 90vw;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 400px;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    box-shadow: 5px -14px 34px rgba(20, 156, 182, 0.15),
+        0 -1.5px 6px rgba(53, 110, 201, 0.08);
+    border-radius: 18px;
+}
+
+.itinerary {
+    display: grid;
+    background: var(--color-secondary);
+    width: 80%;
+    height: 70%;
+    align-content: center;
+    justify-content: space-around;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.itinerary p {
+    grid-column: 2/3;
+    white-space-collapse: preserve-breaks;
+ 
+}
+
+.itinerary-icon {
+    width: 100px;
+    grid-column: 1/2;
+}
+
+.explore {
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    height: 40px;
+    margin-bottom: 4.5rem;
+    background: #fff;
+    border: 1px solid black;
+    box-shadow: 5px -14px 34px rgba(20, 156, 182, 0.15),
+        0 -1.5px 6px rgba(53, 110, 201, 0.08);
+
+}
+
+.search-container {
+    width: 100%;
+    margin: 5px;
+    display: flex;
+}
+
+.search-container input {
+    width: 95%;
+    border: none;
+    font-size: 18px;
+}
+
+body h1 {
+    text-align: center;
+}
+
+#search-button {
+    border: none;
+    background: none;
+    width: 5%;
+
+}
+
+#search-button img {
+    width: 20px;   
+}
+
+.country-view {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1.5fr 8px 2.5fr;
+    border-radius: 16px;
+    box-shadow: 8px 9px 12px rgba(20, 156, 182, 0.20);
+}
+
+.cardPhoto {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    grid-column: 1/2;
+    align-self: center;
+    justify-self: center;
+}
+
+.place-details {
+    grid-column: 2/4;
+    padding: 3rem;
+    text-align: center;
+}
+
+.places {
+    position: relative;
+    margin: 4rem auto;
+    max-width: 80%;
+}
+
+.slideshow-container {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(20, 156, 182, 0.15),
+            0 1.5px 6px rgba(53, 110, 201, 0.08);
+}
+
+.slides-wrapper {
+    width: 100%;
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.2s ease;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.slide-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+    object-position: center;
+    
+}
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.slide-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.places-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* @keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+} */
+
+.slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.poi {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.poi-map {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.poi-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.poi-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 650px) {
+    .country-view {
+        display: block;
+        justify-items: center;
+    }
+
+    .slideshow-container .slides-wrapper {
+        height: 300px;
+    }
+
+    .slide-btn {
+    top: 40%;
+    padding: 0.5rem;
+    }
+}

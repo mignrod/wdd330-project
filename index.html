@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wise Trip | Home</title>
+
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header id="header">
+
+    </header>
+
+    <main>
+        <h1>Explore Destinations</h1>
+        <form class="explore">
+            <div class="search-container">
+                <button id="search-button" type="submit"><img src="images/search.png" alt="Icon Search"></button>
+                <input type="text" placeholder="Search destinations (e.g., Paris, Italy, Venezuela, beach)...">
+            </div>  
+        </form>
+        <section id="cards-section">
+            <h1>Recommended Destinations</h1>
+            <div id="cards"></div>
+        </section>
+
+        <section class="itinerary-section">
+            <div class="itinerary">
+                <img class="itinerary-icon" src="images/itinerary.png" alt="Itinerary Icon">
+                <p>Your Itinerary is Empty!<br>
+                Add destinations to start planning your trip!</p>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer id="footer">
+    
+    </footer>
+
+    <script type="module" src="js/utils.mjs"></script>
+
+    <script type="module" src="js/trip-map.js"></script>
+</body>
+</html>

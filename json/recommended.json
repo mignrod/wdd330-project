@@ -1,0 +1,23 @@
+{
+    "Athens": {"city": "Athens", "country": "Greece", "lat": 37.9755648, "lon": 23.7348324},
+    "Bangkok": {"city": "Bangkok", "country": "Thailand", "lat": 13.7524938, "lon": 100.4935089},
+    "Barcelona": {"city": "Barcelona", "country": "Spain", "lat": 41.3825802, "lon": 2.177073},
+    "Berlin": {"city": "Berlin", "country": "Germany", "lat": 52.510885, "lon": 13.3989367},
+    "Cairo": {"city": "Cairo", "country": "Egypt", "lat": 30.0443879, "lon": 31.2357257},
+    "Cape Town": {"city": "Cape Town", "country": "South Africa", "lat": -33.9288301, "lon": 18.4172197},
+    "Dubai": {"city": "Dubai", "country": "United Arab Emirates", "lat": 25.2647227, "lon": 55.2924146},
+    "Istanbul": {"city": "Istanbul", "country": "Turkey", "lat": 41.006381, "lon": 28.9758715},
+    "Lisbon": {"city": "Lisbon", "country": "Portugal", "lat": 38.7077507, "lon": -9.1365919},
+    "London": {"city": "London", "country": "United Kingdom", "lat": 51.5074456, "lon": -0.1277653},
+    "Barquisimeto": {"city": "Barquisimeto", "country": "Venezuela", "lat": 10.4020951, "lon": -66.7983019},
+    "Mexico City": {"city": "Mexico city", "country": "Mexico", "lat": 19.4326296, "lon": -99.1331785},
+    "Moscow": {"city": "Moscow", "country": "Russia", "lat": 55.7505412, "lon": 37.6174782},
+    "New York City": {"city": "New York City", "country": "USA", "lat": 40.7127281, "lon": -74.0060152},
+    "Paris": {"city": "Paris", "country": "France", "lat": 48.8588897, "lon": 2.320041},
+    "Rio de Janeiro": {"city": "Rio de Janeiro", "country": "Brazil", "lat": -22.9110137, "lon": -43.2093727},
+    "Rome": {"city": "Rome", "country": "Italy", "lat": 41.8933203, "lon": 12.4829321},
+    "Seoul": {"city": "Seoul", "country": "South Korea", "lat": 37.5666791, "lon": 126.9782914},
+    "Sydney": {"city": "Sydney", "country": "Australia", "lat": -33.8698439, "lon": 151.2082848},
+    "Tokyo": {"city": "Tokyo", "country": "Japan", "lat": 35.6768601, "lon": 139.7638947},
+    "Toronto": {"city": "Toronto", "country": "Canada", "lat": 43.6534817, "lon": -79.3839347}
+}
