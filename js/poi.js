@@ -1,4 +1,4 @@
-import { loadHeaderFooter, getParam, getImg, getDescriptions, getCoords } from "./utils.mjs";
+import { loadHeaderFooter, getParam, getImg, getDescriptions, getCoords } from "../js/utils.mjs";
 
 loadHeaderFooter();
 
