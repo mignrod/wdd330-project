@@ -1,5 +1,4 @@
 const API_KEY_OPENTRIP = "a7997d0a58msh4b970335eb34949p131620jsn4b16c0e4c9c4";
-const API_KEY_AMADEUS = "hZscHuKA9cIEcrHu2AsteLvHvLryAfp0";
 const baseUrl = "https://opentripmap-places-v1.p.rapidapi.com/en/places/";
 
 
@@ -62,53 +61,6 @@ export async function getCoords(place) {
   return { lat, lon, display_name };
 }
 
-// function initMap() {
-//   const map = L.map("poi-map").setView(MAP_CENTER, 13);
-//   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
-//   return map;
-// }
-// initMap();
-
-// async function fetchPOIs() {
-//   const radius = 5000;
-//   const url = `${baseUrl}radius?radius=${radius}&lon=${MAP_CENTER[1]}&lat=${MAP_CENTER[0]}&apikey=${API_KEY_OPENTRIP}`;
-  
-//   try {
-//       const response = await fetch(url);
-//       const data = await convertToJson(response);
-//       return data.features || [];
-//   } catch (error) {
-//       console.error("Error fetching POIs:", error);
-//       return [];
-//   }
-// }
-
-// async function renderPOIs() {
-//   const map = initMap();
-//   const pois = await fetchPOIs();
-//   const poiList = document.querySelector(".poi-list");
-  
-//   pois.forEach(poi => {
-//       // Añadir marcador al mapa
-//       const marker = L.marker([poi.geometry.coordinates[1], poi.geometry.coordinates[0]])
-//           .addTo(map)
-//           .bindPopup(poi.properties.name);
-      
-//       // Crear tarjeta en lista
-//       const card = document.createElement("div");
-//       card.className = "poi-card";
-//       card.innerHTML = `
-//           <h3>${poi.properties.name}</h3>
-//           <p>${poi.properties.kind || "Punto de interés"}</p>
-//           <button class="view-details" data-id="${poi.properties.xid}">Ver detalles</button>
-//       `;
-//       poiList.appendChild(card);
-//   });
-// }
-
-// // Inicializar al cargar la página
-// document.addEventListener("DOMContentLoaded", renderPOIs);
-
 
 // A function to get details from the user input
 async function searchDetails(city, country, data) {
@@ -162,3 +114,37 @@ export async function loadHeaderFooter() {
 
 }
 
+export async function getFavInfo(place) {
+  if (!place) {
+    console.error("No place parameter found.");
+    return;
+  }
+
+  const url = `${baseUrl}geoname?name=${place}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      "x-rapidapi-key": API_KEY_OPENTRIP,
+      "x-rapidapi-host": "opentripmap-places-v1.p.rapidapi.com"
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    return result;
+
+  } catch (error) {
+    console.error(error);
+  } 
+} 
+
+export function setupAddDestinyButton(place) {
+  const button = document.querySelector(".add-destiny");
+  if (!button) return;
+  button.addEventListener("click", () => {
+    if (place) {
+      window.location.href = `https://mignrod.github.io/wdd330-project/poi/poi.html?place=${encodeURIComponent(place)}`;
+    }
+  });
+}

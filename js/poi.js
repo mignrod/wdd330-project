@@ -260,7 +260,7 @@ function showMessage(msg, isError = false) {
     }
 }
 
-async function getDetailsMap(xid, name) {
+export async function getDetailsMap(xid, name) {
     try {
         const modalContent = document.getElementById("poi-modal-content");
         modalContent.innerHTML = `<div class="loading">Loading...</div>`;
@@ -487,7 +487,31 @@ document.addEventListener("click", function (event) {
 
     // Save favorite places on a list in the localStorage
     const placeId = event.target.dataset.placeId;
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    const placeData = {
+        id: placeId,
+        name: placeCapitalized, 
+        lat: lat || null,
+        lon: lon || null
+      };
+      
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      
+      if (event.target.classList.contains("favorite")) {
+        // Verificar si ya existe (comparando por 'id')
+        const exists = favorites.some(fav => fav.id === placeId);
+        
+        if (!exists) {
+          favorites.push(placeData); // Guardamos el objeto completo
+          localStorage.setItem("favorites", JSON.stringify(favorites));
+          showPopup(`${placeCapitalized} added to favorites.`);
+        }
+      } else {
+        // Eliminar por 'id'
+        favorites = favorites.filter(fav => fav.id !== placeId);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        showPopup(`${placeCapitalized} removed from favorites.`);
+    }
+    
 
     function showPopup(message) {
         let popup = document.createElement("div");
@@ -503,22 +527,20 @@ document.addEventListener("click", function (event) {
         }, 1500);
     }
 
-    if (event.target.classList.contains("favorite")) {
-        // Add to favorites if not already present
-        if (!favorites.includes(placeId)) {
-            favorites.push(placeId);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-            showPopup(`${placeCapitalized} added to favorites.`);
-            console.log(localStorage);
-        }
-    } else {
-        // Remove from favorites if present
-        const index = favorites.indexOf(placeId);
-        if (index !== -1) {
-            favorites.splice(index, 1);
-            localStorage.setItem("favorites", JSON.stringify(favorites));
-            showPopup(`${placeCapitalized} removed from favorites.`);
-            console.log(localStorage);
-        }
-    }
+    // if (event.target.classList.contains("favorite")) {
+    //     // Add to favorites if not already present
+    //     if (!favorites.includes(placeId)) {
+    //         favorites.push(placeId);
+    //         localStorage.setItem("favorites", JSON.stringify(favorites));
+    //         showPopup(`${placeCapitalized} added to favorites.`);
+    //     }
+    // } else {
+    //     // Remove from favorites if present
+    //     const index = favorites.indexOf(placeId);
+    //     if (index !== -1) {
+    //         favorites.splice(index, 1);
+    //         localStorage.setItem("favorites", JSON.stringify(favorites));
+    //         showPopup(`${placeCapitalized} removed from favorites.`);
+    //     }
+    // }
 });
