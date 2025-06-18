@@ -144,7 +144,7 @@ export function setupAddDestinyButton(place) {
   if (!button) return;
   button.addEventListener("click", () => {
     if (place) {
-      window.location.href = `https://mignrod.github.io/wdd330-project/poi/poi.html?place=${encodeURIComponent(place)}`;
+      window.location.href = `https://mignrod.github.io/wdd330-project/comparison/comparison.html`;
     }
   });
 }
