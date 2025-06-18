@@ -58,7 +58,7 @@ async function getDetails(place) {
         const reference = dividePlaceDetails(result.display_name);
         
         let html = `
-            <h2><strong>${placeCapitalized}</strong><span class="heart-icon">
+            <h2><strong>${placeCapitalized}</strong><span class="heart-icon" id="heart-icon" data-place-id="${place}">
             &#9825;
             </span></h2>
             <p><strong>Name:</strong> ${reference}</p>
@@ -478,82 +478,47 @@ function preparePOISection() {
 preparePOISection();
 initMap();
 
-// Attach the heart icon logic after the details are rendered
-function setupHeartIcon() {
-    const heartIcon = document.querySelector(".heart-icon");
-    const placeId = place;
+// Add favorite (heart icon) toggle functionality
+document.addEventListener("click", function (event) {
+    if (event.target.id === "heart-icon") {
+        event.target.classList.toggle("favorite");
 
-    if (heartIcon) {
-        heartIcon.setAttribute("data-place-id", placeId);
-
-        const favorites = getFavorites();
-        if (favorites.includes(placeId)) {
-            heartIcon.classList.add("favorite");
-            heartIcon.style.color = "red";
-        } else {
-            heartIcon.classList.remove("favorite");
-            heartIcon.style.color = "";
-        }
-
-        heartIcon.addEventListener("click", toggleFavorite);
     }
-}
 
-// Toggle favorite handler
-function toggleFavorite(event) {
-    const heartIcon = event.currentTarget;
-    const placeId = heartIcon.getAttribute("data-place-id");
+    // Save favorite places on a list in the localStorage
+    const placeId = event.target.dataset.placeId;
+    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    let favorites = getFavorites();
-    const isFavorite = heartIcon.classList.contains("favorite");
+    function showPopup(message) {
+        let popup = document.createElement("div");
+        popup.className = "favorite-popup";
+        popup.textContent = message;
+        document.body.appendChild(popup);
+        setTimeout(() => {
+            popup.classList.add("show");
+        }, 10);
+        setTimeout(() => {
+            popup.classList.remove("show");
+            setTimeout(() => popup.remove(), 300);
+        }, 1500);
+    }
 
-    if (isFavorite) {
-        favorites = favorites.filter(id => id !== placeId);
-        heartIcon.classList.remove("favorite");
-        heartIcon.style.color = ""; // Quita el color rojo
-        showFavoriteMessage("Removed from favorites");
-    } else {
+    if (event.target.classList.contains("favorite")) {
+        // Add to favorites if not already present
         if (!favorites.includes(placeId)) {
             favorites.push(placeId);
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+            showPopup(`${placeCapitalized} added to favorites.`);
+            console.log(localStorage);
         }
-        heartIcon.classList.add("favorite");
-        heartIcon.style.color = "red"; // Pone el color rojo
-        showFavoriteMessage("Added to favorites");
+    } else {
+        // Remove from favorites if present
+        const index = favorites.indexOf(placeId);
+        if (index !== -1) {
+            favorites.splice(index, 1);
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+            showPopup(`${placeCapitalized} removed from favorites.`);
+            console.log(localStorage);
+        }
     }
-
-    saveFavorites(favorites);
-}
-
-// Show a temporary message when toggling favorites
-function showFavoriteMessage(msg) {
-    let msgDiv = document.getElementById("favorite-msg");
-    if (!msgDiv) {
-        msgDiv = document.createElement("div");
-        msgDiv.id = "favorite-msg";
-        msgDiv.style.position = "fixed";
-        msgDiv.style.top = "20px";
-        msgDiv.style.right = "20px";
-        msgDiv.style.background = "#149CB6";
-        msgDiv.style.color = "#fff";
-        msgDiv.style.padding = "10px 20px";
-        msgDiv.style.borderRadius = "5px";
-        msgDiv.style.zIndex = "9999";
-        document.body.appendChild(msgDiv);
-    }
-    msgDiv.textContent = msg;
-    msgDiv.style.display = "block";
-    setTimeout(() => {
-        msgDiv.style.display = "none";
-    }, 1200);
-}
-
-function getFavorites() {
-    const favoritesJSON = localStorage.getItem("placeFavorites");
-    return favoritesJSON ? JSON.parse(favoritesJSON) : [];
-}
-
-function saveFavorites(favorites) {
-    localStorage.setItem("placeFavorites", JSON.stringify(favorites));
-}
-
-setupHeartIcon();
+});

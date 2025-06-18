@@ -212,12 +212,26 @@
 }
 
 .heart-icon {
+    color: transparent;
+    text-shadow: 0 0 0 #5c5a5a;
+    font-size: 24px;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: text-shadow 0.3s;
 }
 
 .heart-icon.favorite {
-    color: red;
+    text-shadow: 0 0 0 red;
+}
+
+.favorite-popup {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    background-color: #149CB6;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1001;
 }
 
 .external-link {
