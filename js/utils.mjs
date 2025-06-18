@@ -142,7 +142,7 @@ export async function getFavInfo(place) {
 export function setupAddDestinyButton() {
   const button = document.querySelector(".add-destiny");
   if (!button) return;
-  button.addEventListener("click", () => {
-    window.location.href = `https://mignrod.github.io/wdd330-project/comparison/comparison.html`;
-  });
+  button.onclick = () => {
+    window.location.href = "https://mignrod.github.io/wdd330-project/comparison/comparison.html";
+  };
 }

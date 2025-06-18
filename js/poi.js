@@ -527,20 +527,4 @@ document.addEventListener("click", function (event) {
         }, 1500);
     }
 
-    // if (event.target.classList.contains("favorite")) {
-    //     // Add to favorites if not already present
-    //     if (!favorites.includes(placeId)) {
-    //         favorites.push(placeId);
-    //         localStorage.setItem("favorites", JSON.stringify(favorites));
-    //         showPopup(`${placeCapitalized} added to favorites.`);
-    //     }
-    // } else {
-    //     // Remove from favorites if present
-    //     const index = favorites.indexOf(placeId);
-    //     if (index !== -1) {
-    //         favorites.splice(index, 1);
-    //         localStorage.setItem("favorites", JSON.stringify(favorites));
-    //         showPopup(`${placeCapitalized} removed from favorites.`);
-    //     }
-    // }
 });
