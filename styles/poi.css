@@ -1,0 +1,259 @@
+.poi-container {
+    display: block;
+    gap: 20px;
+    height: 500px;
+    width: 85%;
+    margin: auto;
+}
+
+.poi-controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#poi-map {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.place-details {
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px;
+    border: 0.5px solid #149CB6;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.category-btn {
+    padding: 6px 12px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.category-btn:hover {
+    background: #e0e0e0;
+}
+
+.category-btn.active {
+    background: #149CB6;
+    color: white;
+    border-color: #149CB6;
+}
+
+.poi-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 25px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: #333;
+}
+
+/* Estilos para el contenido del modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.wikidata-link {
+    background-color: #6e9ef7;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.wikidata-link:hover {
+    background-color: #4d84f4;
+}
+
+.details-content {
+    line-height: 1.6;
+}
+
+.categories {
+    color: #7f8c8d;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.image-container {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.description-section {
+    margin: 20px 0;
+}
+
+.description-section h4 {
+    margin-bottom: 10px;
+    color: #34495e;
+}
+
+.description {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+.location-info {
+    background-color: #f5f7fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.address,
+.coordinates {
+    margin: 5px 0;
+}
+
+.coordinates a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.coordinates a:hover {
+    text-decoration: underline;
+}
+
+.external-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.external-link {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.external-link:hover {
+    background-color: #2980b9;
+}
+
+/* Estados de carga y error */
+.loading-state {
+    text-align: center;
+    padding: 40px;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.error-message {
+    text-align: center;
+    padding: 30px;
+    color: #e74c3c;
+}
