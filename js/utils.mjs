@@ -64,7 +64,7 @@ export async function getCoords(place) {
 
 // function initMap() {
 //   const map = L.map("poi-map").setView(MAP_CENTER, 13);
-//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+//   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 //   return map;
 // }
 // initMap();
@@ -86,7 +86,7 @@ export async function getCoords(place) {
 // async function renderPOIs() {
 //   const map = initMap();
 //   const pois = await fetchPOIs();
-//   const poiList = document.querySelector('.poi-list');
+//   const poiList = document.querySelector(".poi-list");
   
 //   pois.forEach(poi => {
 //       // Añadir marcador al mapa
@@ -95,11 +95,11 @@ export async function getCoords(place) {
 //           .bindPopup(poi.properties.name);
       
 //       // Crear tarjeta en lista
-//       const card = document.createElement('div');
-//       card.className = 'poi-card';
+//       const card = document.createElement("div");
+//       card.className = "poi-card";
 //       card.innerHTML = `
 //           <h3>${poi.properties.name}</h3>
-//           <p>${poi.properties.kind || 'Punto de interés'}</p>
+//           <p>${poi.properties.kind || "Punto de interés"}</p>
 //           <button class="view-details" data-id="${poi.properties.xid}">Ver detalles</button>
 //       `;
 //       poiList.appendChild(card);
@@ -107,7 +107,7 @@ export async function getCoords(place) {
 // }
 
 // // Inicializar al cargar la página
-// document.addEventListener('DOMContentLoaded', renderPOIs);
+// document.addEventListener("DOMContentLoaded", renderPOIs);
 
 
 // A function to get details from the user input

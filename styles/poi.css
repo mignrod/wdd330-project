@@ -211,6 +211,15 @@
     margin-top: 20px;
 }
 
+.heart-icon {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.heart-icon.favorite {
+    color: red;
+}
+
 .external-link {
     background-color: #3498db;
     color: white;

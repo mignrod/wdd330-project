@@ -11,23 +11,21 @@ const radius = 2000;
 const API_KEY_OPENTRIP = "a7997d0a58msh4b970335eb34949p131620jsn4b16c0e4c9c4";
 const baseUrl = "https://opentripmap-places-v1.p.rapidapi.com/en/places/";
 const categories = {
-    'museums': 'museums',
-    'food': 'food',
-    'historic': 'historic',
-    'religion': 'religion',
-    'natural': 'natural',
-    'adult': 'adult',
-    'shops': 'shops',
-    'accomodations': 'accomodations'
+    "museums": "museums",
+    "food": "food",
+    "historic": "historic",
+    "religion": "religion",
+    "natural": "natural",
+    "adult": "adult",
+    "shops": "shops",
+    "accomodations": "accomodations"
 };
-// let map;
-// let currentMarkers = [];
-let selectedCategories = new Set();
 
+let selectedCategories = new Set();
 
 function dividePlaceDetails(display_name) {
     const cleaned = display_name;
-    const parts = cleaned.split(',').filter(part => part.trim() !== '');
+    const parts = cleaned.split(",").filter(part => part.trim() !== "");
     if (parts.length >= 2) {
         return `${parts[0].trim()}, ${parts[parts.length - 1].trim()}`;
     }
@@ -60,7 +58,9 @@ async function getDetails(place) {
         const reference = dividePlaceDetails(result.display_name);
         
         let html = `
-            <h2><strong>${placeCapitalized}</strong></h2>
+            <h2><strong>${placeCapitalized}</strong><span class="heart-icon">
+            &#9825;
+            </span></h2>
             <p><strong>Name:</strong> ${reference}</p>
             <p><strong>Coords:</strong> Lat ${lat}, Lon ${lon}</p>
         `;
@@ -101,8 +101,8 @@ async function initSlideshow() {
     createSlideShow();
 
     const slidesWrapper = document.querySelector(".slides-wrapper");
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
     
     if (!slidesWrapper || !prevBtn || !nextBtn) {
         console.error("Error: Slideshow elements not found");
@@ -117,19 +117,19 @@ async function initSlideshow() {
         const imgUrls = await getImg(place);
         images = imgUrls.map(url => ({
             url: url,
-            alt: `${place} Photo` || 'Placeholder'
+            alt: `${place} Photo` || "Placeholder"
         }));
         
     } catch (error) {
         console.error("Error loading images:", error);
         images = [{
-            url: 'https://via.placeholder.com/800x400?text=Placeholder',
-            alt: 'Placeholder'
+            url: "https://via.placeholder.com/800x400?text=Placeholder",
+            alt: "Placeholder"
         }];
     }
     function renderSlides() {
         slidesWrapper.innerHTML = images.map((img, index) => `
-            <div class="slide ${index === 0 ? 'active' : ''}">
+            <div class="slide ${index === 0 ? "active" : ""}">
                 <img src="${img.url}" alt="${img.alt}" class="slide-img">
             </div>
         `).join("");
@@ -147,11 +147,11 @@ async function initSlideshow() {
         
         currentIndex = (newIndex + totalSlides) % totalSlides;
         
-        const currentSlide = document.querySelector('.slide.active');
+        const currentSlide = document.querySelector(".slide.active");
         const nextSlide = slides[currentIndex];
         
         if (currentSlide) {
-            currentSlide.style.opacity = '0';
+            currentSlide.style.opacity = "0";
             await new Promise(resolve => setTimeout(resolve, 500));
             currentSlide.classList.remove("active");
         }
@@ -209,7 +209,7 @@ function renderCategoryButtons() {
     const container = document.querySelector(".category-buttons");
     if (!container) return;
     
-    container.innerHTML = '';
+    container.innerHTML = "";
     
     const allBtn = document.createElement("button");
     allBtn.className = "category-btn active";
@@ -256,13 +256,13 @@ function clearMarkers() {
 function showMessage(msg, isError = false) {
     const detailsContainer = document.querySelector(".place-details");
     if (detailsContainer) {
-        detailsContainer.innerHTML = `<p class="${isError ? 'error' : ''}">${msg}</p>`;
+        detailsContainer.innerHTML = `<p class="${isError ? "error" : ""}">${msg}</p>`;
     }
 }
 
 async function getDetailsMap(xid, name) {
     try {
-        const modalContent = document.getElementById('poi-modal-content');
+        const modalContent = document.getElementById("poi-modal-content");
         modalContent.innerHTML = `<div class="loading">Loading...</div>`;
         openModal();
 
@@ -284,17 +284,17 @@ async function getDetailsMap(xid, name) {
 
     } catch (error) {
         console.error("Error:", error);
-        document.getElementById('poi-modal-content').innerHTML = `
+        document.getElementById("poi-modal-content").innerHTML = `
             <div class="error">Error loading data: ${error.message}</div>
         `;
     }
 }
 
 function openModal() {
-    const modal = document.getElementById('poiModal');
+    const modal = document.getElementById("poiModal");
     if (modal) {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
     }
 }
 
@@ -312,9 +312,9 @@ function renderDetails(place) {
                 <img src="${place.preview.source}" 
                      alt="${place.name}" 
                      class="preview-image"
-                     onerror="this.style.display='none'">
+                     onerror="this.style.display="none"">
                 ${place.preview.width && place.preview.height ? 
-                  `<span class="image-dimensions">${place.preview.width}×${place.preview.height}px</span>` : ''}
+                  `<span class="image-dimensions">${place.preview.width}×${place.preview.height}px</span>` : ""}
             </div>
         `;
     }
@@ -341,7 +341,7 @@ function renderDetails(place) {
     
     html += `</div>`;
     
-    document.getElementById('poi-modal-content').innerHTML = html;
+    document.getElementById("poi-modal-content").innerHTML = html;
 }
 
 // Load points of interest
@@ -381,7 +381,7 @@ async function loadPOIs() {
                     .addTo(map)
                     .bindPopup(`
                         <div class="poi-popup">
-                            <strong>${name || 'Point of Interest'}</strong><br>
+                            <strong>${name || "Point of Interest"}</strong><br>
                             <small>${kinds ? kinds.split(",").join(", ") : ""}</small><br>
                             <button class="view-details" data-id="${xid}">View Details</button>
                         </div>
@@ -458,22 +458,102 @@ function preparePOISection() {
     poiSection.innerHTML = poiElements;
     mapInitialized = false;
 
-    const closeModal = document.querySelector('.close-modal');
+    const closeModal = document.querySelector(".close-modal");
     if (closeModal) {
-        closeModal.addEventListener('click', () => {
-            document.getElementById('poiModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        closeModal.addEventListener("click", () => {
+            document.getElementById("poiModal").style.display = "none";
+            document.body.style.overflow = "auto";
         });
     }
         
     // Cerrar modal al hacer clic fuera del contenido
-    document.getElementById('poiModal')?.addEventListener('click', function (e) {
+    document.getElementById("poiModal")?.addEventListener("click", function (e) {
         if (e.target === this) {
-            this.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            this.style.display = "none";
+            document.body.style.overflow = "auto";
         }
     });
 }
 
 preparePOISection();
 initMap();
+
+// Attach the heart icon logic after the details are rendered
+function setupHeartIcon() {
+    const heartIcon = document.querySelector(".heart-icon");
+    const placeId = place;
+
+    if (heartIcon) {
+        heartIcon.setAttribute("data-place-id", placeId);
+
+        const favorites = getFavorites();
+        if (favorites.includes(placeId)) {
+            heartIcon.classList.add("favorite");
+            heartIcon.style.color = "red";
+        } else {
+            heartIcon.classList.remove("favorite");
+            heartIcon.style.color = "";
+        }
+
+        heartIcon.addEventListener("click", toggleFavorite);
+    }
+}
+
+// Toggle favorite handler
+function toggleFavorite(event) {
+    const heartIcon = event.currentTarget;
+    const placeId = heartIcon.getAttribute("data-place-id");
+
+    let favorites = getFavorites();
+    const isFavorite = heartIcon.classList.contains("favorite");
+
+    if (isFavorite) {
+        favorites = favorites.filter(id => id !== placeId);
+        heartIcon.classList.remove("favorite");
+        heartIcon.style.color = ""; // Quita el color rojo
+        showFavoriteMessage("Removed from favorites");
+    } else {
+        if (!favorites.includes(placeId)) {
+            favorites.push(placeId);
+        }
+        heartIcon.classList.add("favorite");
+        heartIcon.style.color = "red"; // Pone el color rojo
+        showFavoriteMessage("Added to favorites");
+    }
+
+    saveFavorites(favorites);
+}
+
+// Show a temporary message when toggling favorites
+function showFavoriteMessage(msg) {
+    let msgDiv = document.getElementById("favorite-msg");
+    if (!msgDiv) {
+        msgDiv = document.createElement("div");
+        msgDiv.id = "favorite-msg";
+        msgDiv.style.position = "fixed";
+        msgDiv.style.top = "20px";
+        msgDiv.style.right = "20px";
+        msgDiv.style.background = "#149CB6";
+        msgDiv.style.color = "#fff";
+        msgDiv.style.padding = "10px 20px";
+        msgDiv.style.borderRadius = "5px";
+        msgDiv.style.zIndex = "9999";
+        document.body.appendChild(msgDiv);
+    }
+    msgDiv.textContent = msg;
+    msgDiv.style.display = "block";
+    setTimeout(() => {
+        msgDiv.style.display = "none";
+    }, 1200);
+}
+
+function getFavorites() {
+    const favoritesJSON = localStorage.getItem("placeFavorites");
+    return favoritesJSON ? JSON.parse(favoritesJSON) : [];
+}
+
+function saveFavorites(favorites) {
+    localStorage.setItem("placeFavorites", JSON.stringify(favorites));
+}
+
+setupHeartIcon();
