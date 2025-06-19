@@ -139,10 +139,17 @@ export async function getFavInfo(place) {
   } 
 } 
 
-export function setupAddDestinyButton() {
-  const button = document.querySelector(".add-destiny");
-  if (!button) return;
-  button.onclick = () => {
-    window.location.href = "https://mignrod.github.io/wdd330-project/comparison/comparison.html";
-  };
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("add-destiny");
+  if (button) {
+    // Remueve cualquier listener previo para asegurarnos
+    button.replaceWith(button.cloneNode(true));
+    const newButton = document.getElementById("add-destiny");
+    
+    newButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.location.href = "https://mignrod.github.io/wdd330-project/comparison/comparison.html";
+    });
+  }
+});

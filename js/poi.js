@@ -497,11 +497,11 @@ document.addEventListener("click", function (event) {
       let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
       
       if (event.target.classList.contains("favorite")) {
-        // Verificar si ya existe (comparando por 'id')
+        
         const exists = favorites.some(fav => fav.id === placeId);
         
         if (!exists) {
-          favorites.push(placeData); // Guardamos el objeto completo
+          favorites.push(placeData); 
           localStorage.setItem("favorites", JSON.stringify(favorites));
           showPopup(`${placeCapitalized} added to favorites.`);
         }
