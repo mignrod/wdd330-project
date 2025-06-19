@@ -480,6 +480,7 @@ initMap();
 
 // Add favorite (heart icon) toggle functionality
 document.addEventListener("click", function (event) {
+    if (event.target.closest(".add-destiny")) return;
     if (event.target.id === "heart-icon") {
         event.target.classList.toggle("favorite");
 

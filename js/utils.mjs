@@ -140,15 +140,45 @@ export async function getFavInfo(place) {
 } 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.querySelector("add-destiny");
-  if (button) {
-    button.replaceWith(button.cloneNode(true));
-    const newButton = document.querySelector("add-destiny");
+  // Usamos querySelectorAll para debuggear
+  const buttons = document.querySelectorAll('.add-destiny');
+  console.log("Botones encontrados:", buttons.length);
+
+  if (buttons.length > 0) {
+    const button = buttons[0]; // Tomamos el primer botón
     
-    newButton.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = "https://mignrod.github.io/wdd330-project/comparison/comparison.html";
-    });
+    // Limpiamos listeners existentes
+    const newButton = button.cloneNode(true);
+    button.replaceWith(newButton);
+    
+    newButton.addEventListener('click', function(e) {
+      console.log("Click registrado en:", e.target);
+      e.stopImmediatePropagation();
+      
+      // Redirección con validación
+      const targetUrl = new URL("https://mignrod.github.io/wdd330-project/comparison/comparison.html");
+      console.log("URL válida:", targetUrl.href);
+      
+      window.location.href = targetUrl.href;
+    }, true);
+  } else {
+    console.error("Error: No se encontró el botón con clase 'add-destiny'");
+    console.log("Clases de todos los botones en la página:",
+      Array.from(document.querySelectorAll('button')).map(b => b.className));
   }
 });
+
+function initButton() {
+  const button = document.querySelector(".add-destiny");
+  
+  if (button) {
+    button.addEventListener("click", () => {
+      window.location.href = "https://mignrod.github.io/wdd330-project/comparison/comparison.html";
+    });
+  } else {
+    console.error("Botton not found...");
+    setTimeout(initButton, 500); 
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initButton);
