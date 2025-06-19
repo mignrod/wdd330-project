@@ -140,9 +140,8 @@ export async function getFavInfo(place) {
 } 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const button = document.getElementById("add-destiny");
+  const button = document.querySelector("add-destiny");
   if (button) {
-    // Remueve cualquier listener previo para asegurarnos
     button.replaceWith(button.cloneNode(true));
     const newButton = document.getElementById("add-destiny");
     
