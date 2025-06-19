@@ -18,7 +18,7 @@ const categories = {
     "natural": "natural",
     "adult": "adult",
     "shops": "shops",
-    "accomodations": "accomodations"
+    "accommodations": "accommodations"
 };
 
 let selectedCategories = new Set();
