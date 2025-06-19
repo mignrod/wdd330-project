@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.querySelector("add-destiny");
   if (button) {
     button.replaceWith(button.cloneNode(true));
-    const newButton = document.getElementById("add-destiny");
+    const newButton = document.querySelector("add-destiny");
     
     newButton.addEventListener("click", (e) => {
       e.preventDefault();
